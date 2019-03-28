@@ -1,0 +1,73 @@
+---
+version: '3'
+services:
+  client0:
+    build:
+      context: client
+    command: "0"
+    volumes:
+      - "./client.config:/app/client.config"
+    ports:
+      - 1338:1338
+    depends_on:
+      - server0
+      - server1
+      - server2
+  client1:
+    hostname: "test"
+    build:
+      context: client
+    command: "1"
+    volumes:
+      - "./client.config:/app/client.config"
+    ports:
+      - 1339:1338
+    depends_on:
+      - server0
+      - server1
+      - server2
+  client2:
+    build:
+      context: client
+    command: "2"
+    volumes:
+      - "./client.config:/app/client.config"
+    depends_on:
+      - server0
+      - server1
+      - server2
+  client3:
+    build:
+      context: client
+    command: "3"
+    volumes:
+      - "./client.config:/app/client.config"
+    depends_on:
+      - server0
+      - server1
+      - server2
+  client4:
+    build:
+      context: client
+    command: "4"
+    volumes:
+      - "./client.config:/app/client.config"
+    depends_on:
+      - server0
+      - server1
+      - server2
+  server0:
+    build:
+      context: server
+    volumes:
+      - "./server.config:/app/server.config"
+  server1:
+    build:
+      context: server
+    volumes:
+      - "./server.config:/app/server.config"
+  server2:
+    build:
+      context: server
+    volumes:
+      - "./server.config:/app/server.config"
